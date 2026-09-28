@@ -65,7 +65,8 @@ func TestDetectionsExportWritesAFilePerRule(t *testing.T) {
 	h := newHarness(t, detectionRules(t)())
 	folder := filepath.Join(t.TempDir(), "rules")
 	out := h.ok("xdr", "detections", "export", folder)
-	contains(t, out, "command-and-control/certutil-used-to-download-remote-content.yaml", "execution/old-style-rule.yaml", "written")
+	contains(t, out, filepath.FromSlash("command-and-control/certutil-used-to-download-remote-content.yaml"),
+		filepath.FromSlash("execution/old-style-rule.yaml"), "written")
 	contains(t, h.err.String(), "wrote 3 of 3 rule(s)", "2 file(s) have TODO(export) comments")
 	text, err := os.ReadFile(filepath.Join(folder, "execution", "old-style-rule.yaml"))
 	if err != nil || !strings.Contains(string(text), "TODO(export)") {

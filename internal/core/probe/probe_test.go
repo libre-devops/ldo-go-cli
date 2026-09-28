@@ -3,6 +3,8 @@ package probe
 import (
 	"context"
 	"crypto/tls"
+	"crypto/x509"
+	"errors"
 	"io"
 	"log"
 	"net"
@@ -260,6 +262,9 @@ func TestAServerNotSpeakingTLSFailsTheHandshake(t *testing.T) {
 			if err != nil {
 				return
 			}
+			// Read the client's hello first: closing with it unread resets the connection on
+			// Windows before the client reads the answer.
+			_, _ = connection.Read(make([]byte, 4096))
 			_, _ = connection.Write([]byte("\x00\x01\x02\x03\x04\x05\x06\x07"))
 			_ = connection.Close()
 		}
@@ -308,5 +313,30 @@ func TestAllKeepsTheOrderAndRefusesABadProxy(t *testing.T) {
 	missing := Prober{Settings: network.Settings{CABundle: "/nowhere.pem", Getenv: env(nil)}}
 	if _, err := missing.All(context.Background(), targets, 1); err == nil {
 		t.Error("a missing bundle was taken")
+	}
+}
+
+// A platform that says why only in its own words gets the reason from the chain.
+func TestAnUntypedVerificationErrorIsReadFromTheChain(t *testing.T) {
+	authority := certfake.NewAuthority(t, "Inspection Root", "")
+	now := time.Now()
+	current := authority.Leaf(t, now.Add(time.Hour), "127.0.0.1")
+	expired := authority.Leaf(t, now.Add(-time.Hour), "127.0.0.1")
+	chain := func(certificate tls.Certificate) []*x509.Certificate {
+		return []*x509.Certificate{certificate.Leaf, authority.Certificate}
+	}
+	for _, test := range []struct {
+		chain []*x509.Certificate
+		want  string
+	}{
+		{chain(current), "TLS: self-signed certificate in certificate chain; the certificate is issued by Inspection Root"},
+		{chain(current)[:1], "TLS: unable to get local issuer certificate; the certificate is issued by Inspection Root"},
+		{chain(expired), "TLS: certificate has expired; the certificate is issued by Inspection Root"},
+		{nil, "TLS: the certificate did not verify"},
+	} {
+		verification := &tls.CertificateVerificationError{UnverifiedCertificates: test.chain, Err: errors.New("x509: not trusted")}
+		if got := tlsDetail(verification, now); got != test.want {
+			t.Errorf("%q", got)
+		}
 	}
 }

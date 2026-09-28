@@ -13,7 +13,9 @@ ldo-go profiles        # what it holds, which profile is active, and whether eac
 It is the Python `ldo`'s own file, at `~/.config/ldo/config.toml` (`%APPDATA%\ldo` on
 Windows), or wherever `--config` or `LDO_CONFIG` points, so a profile set up for one works
 for the other. It is created readable only by you, has a section per vendor, and never holds
-a secret. Unknown keys are rejected, so a typo fails loudly.
+a secret. Unknown keys are rejected, so a typo fails loudly. On Windows, write a path in
+single quotes (`ca_bundle = 'C:\certs\corp.pem'`) or with forward slashes: in double quotes,
+TOML reads a backslash as the start of an escape.
 
 ```toml
 # proxy = "127.0.0.1:3128"             # behind a corporate proxy, e.g. cntlm (see network.md)

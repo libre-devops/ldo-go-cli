@@ -1,0 +1,8 @@
+# Text files are LF everywhere, Windows checkouts included: the tests compare output with
+# golden files byte for byte, and Go's own tools write LF.
+* text=auto eol=lf
+# Test fixtures that are not text.
+*.zip binary
+*.xlsx binary
+*.xlsm binary
+*.png binary

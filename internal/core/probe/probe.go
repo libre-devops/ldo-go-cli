@@ -137,15 +137,19 @@ func (p Prober) client() (*http.Client, error) {
 	}, nil
 }
 
-func (p Prober) probe(ctx context.Context, client *http.Client, target Target, how network.Route) Result {
-	now := p.Now
-	if now == nil {
-		now = time.Now
+// clock is now.
+func (p Prober) clock() time.Time {
+	if p.Now == nil {
+		return time.Now()
 	}
-	started := now()
+	return p.Now()
+}
+
+func (p Prober) probe(ctx context.Context, client *http.Client, target Target, how network.Route) Result {
+	started := p.clock()
 	result := p.send(ctx, client, target, how)
 	result.URL, result.Route = target.URL, how
-	result.Seconds = math.Round(now().Sub(started).Seconds()*1000) / 1000
+	result.Seconds = math.Round(p.clock().Sub(started).Seconds()*1000) / 1000
 	return result
 }
 
@@ -177,7 +181,7 @@ func (p Prober) failed(err error, how network.Route) Result {
 	var operation *net.OpError
 	switch {
 	case errors.As(err, &verification):
-		return Result{Detail: tlsDetail(verification), Hint: tlsHint(p.Settings.Trust())}
+		return Result{Detail: tlsDetail(verification, p.clock()), Hint: tlsHint(p.Settings.Trust())}
 	case strings.Contains(err.Error(), "server gave HTTP response to HTTPS client"):
 		// Go gives this no type of its own: a plain HTTP answer to https.
 		return Result{Detail: "TLS: the server answered in plain HTTP", Hint: "check the URL is https, on the right port"}
@@ -247,8 +251,9 @@ func noWayOutHint(local string) string {
 }
 
 // tlsDetail is why the certificate did not verify, in the words a person searches for,
-// and who issued it.
-func tlsDetail(verification *tls.CertificateVerificationError) string {
+// and who issued it. Where the platform's verifier says why only in its own words (macOS
+// does, for a chain no trusted root signed), the reason is read from the chain.
+func tlsDetail(verification *tls.CertificateVerificationError, now time.Time) string {
 	reason := "the certificate did not verify"
 	var unknown x509.UnknownAuthorityError
 	var hostname x509.HostnameError
@@ -260,6 +265,10 @@ func tlsDetail(verification *tls.CertificateVerificationError) string {
 	case errors.As(verification.Err, &invalid) && invalid.Reason == x509.Expired:
 		reason = "certificate has expired"
 	case errors.As(verification.Err, &unknown):
+		reason = unknownAuthority(chain)
+	case len(chain) > 0 && now.After(chain[0].NotAfter):
+		reason = "certificate has expired"
+	case len(chain) > 0:
 		reason = unknownAuthority(chain)
 	}
 	detail := "TLS: " + reason

@@ -31,6 +31,11 @@ func sameJSON(t *testing.T, name, got string) {
 	if err := json.Unmarshal([]byte(pythonOutput(t, name)), &want); err != nil {
 		t.Fatal(err)
 	}
+	// The Python's output was recorded on Linux: a path the command shows (its files'
+	// sources) has Windows's separators on Windows, in both tools alike.
+	if os.PathSeparator == '\\' {
+		got = strings.ReplaceAll(got, `\\`, "/")
+	}
 	if err := json.Unmarshal([]byte(got), &found); err != nil {
 		t.Fatalf("%v\n%s", err, got)
 	}

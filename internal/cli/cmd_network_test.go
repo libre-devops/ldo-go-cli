@@ -60,7 +60,7 @@ func TestNetworkTestShowsTheProxyWithoutItsPassword(t *testing.T) {
 	bundle := filepath.Join(t.TempDir(), "corp.pem")
 	_ = os.WriteFile(bundle, []byte("-----BEGIN CERTIFICATE-----\nMA==\n-----END CERTIFICATE-----\n"), 0o600)
 	h.config(strings.Replace(testConfig, "[microsoft]", "proxy = \"http://ana:secret@proxy.corp.example:8080\"\n"+
-		"no_proxy = [\"corp.example\", \"localhost\"]\nca_bundle = \""+bundle+"\"\n\n[microsoft]", 1))
+		"no_proxy = [\"corp.example\", \"localhost\"]\nca_bundle = '"+bundle+"'\n\n[microsoft]", 1))
 	out := h.ok("network", "test")
 	contains(t, out, "Proxy         http://ana:***@proxy.corp.example:8080 (config)",
 		"No proxy      localhost, 127.0.0.1, ::1, 169.254.169.254, corp.example",
