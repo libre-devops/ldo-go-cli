@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"slices"
+	"strconv"
 	"strings"
 	"sync"
 
@@ -81,7 +82,7 @@ func (r *Runner) Run(_ context.Context, request process.Request) (process.Result
 		}
 	}
 	if best < 0 {
-		return Failed(2, "ERROR: no fake for 'az "+args+"'"), nil
+		return Failed(2, "ERROR: no fake for az "+strconv.Quote(args)), nil
 	}
 	if r.routes[best].Func != nil {
 		return r.routes[best].Func(trimmed(request.Args)), nil

@@ -207,7 +207,7 @@ func (c *Client) RoleAssignments(ctx context.Context, principalID string, subscr
 			return nil, err
 		}
 		items, err := httpx.Collect(c.API.All(ctx, "/subscriptions/"+id+"/providers/Microsoft.Authorization/roleAssignments",
-			version(AuthorizationAPI, "$filter", "assignedTo('"+principal+"')"), "nextLink"))
+			version(AuthorizationAPI, "$filter", "assignedTo("+util.ODataString(principal)+")"), "nextLink"))
 		if err != nil {
 			return nil, err
 		}

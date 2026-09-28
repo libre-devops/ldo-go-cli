@@ -104,3 +104,24 @@ func TestGrouped(t *testing.T) {
 		t.Error(Grouped(12345, 0))
 	}
 }
+
+// The cases and their answers are Python's own repr, run on each.
+func TestPythonReprQuotesAsPythonDoes(t *testing.T) {
+	for _, test := range []struct{ value, want string }{
+		{"PT5M", "'PT5M'"},
+		{"Malware", "'Malware'"},
+		{"it's", "\"it's\""},
+		{"say \"hi\"", "'say \"hi\"'"},
+		{"both ' and \"", "'both \\' and \"'"},
+		{"back\\slash", "'back\\\\slash'"},
+		{"line\nbreak\ttab\rret", "'line\\nbreak\\ttab\\rret'"},
+		{"nul\u0000del\u007fbell\u0007", "'nul\\x00del\\x7fbell\\x07'"},
+		{"caf\u00e9", "'caf\u00e9'"},
+		{"", "''"},
+		{"x\nquery: evil", "'x\\nquery: evil'"},
+	} {
+		if got := PythonRepr(test.value); got != test.want {
+			t.Errorf("%q: %s, want %s", test.value, got, test.want)
+		}
+	}
+}

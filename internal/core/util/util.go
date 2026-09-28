@@ -89,6 +89,40 @@ func SplitNames(values []string) []string {
 	return names
 }
 
+// reprSingle and reprDouble escape a string's inside as Python's repr does, between single
+// quotes and between double quotes: backslashes, that quote, and the control characters
+// its own escapes name. reprControls then writes any other control character as \xNN.
+var (
+	reprSingle = strings.NewReplacer(`\`, `\\`, `'`, `\'`, "\n", `\n`, "\r", `\r`, "\t", `\t`)
+	reprDouble = strings.NewReplacer(`\`, `\\`, `"`, `\"`, "\n", `\n`, "\r", `\r`, "\t", `\t`)
+)
+
+// PythonRepr is value quoted as Python's repr quotes a string: in single quotes, or in double
+// quotes when it holds a single quote and no double one, with backslashes, the quote and
+// control characters escaped. A message that shows a value from a service this way reads
+// as the Python ldo's does, and the value cannot end its quotes early.
+func PythonRepr(value string) string {
+	if strings.Contains(value, "'") && !strings.Contains(value, `"`) {
+		return `"` + reprControls(reprDouble.Replace(value)) + `"`
+	}
+	return "'" + reprControls(reprSingle.Replace(value)) + "'"
+}
+
+// reprControls is escaped text with each control character left in it (all but a tab, a
+// line feed and a carriage return, which the replacers named) as \xNN, as Python writes
+// them.
+func reprControls(escaped string) string {
+	var out strings.Builder
+	for _, char := range escaped {
+		if char < 0x20 || char == 0x7f {
+			fmt.Fprintf(&out, `\x%02x`, char)
+			continue
+		}
+		out.WriteRune(char)
+	}
+	return out.String()
+}
+
 // ODataString quotes value as an OData string literal, doubling embedded single quotes.
 func ODataString(value string) string {
 	return "'" + strings.ReplaceAll(value, "'", "''") + "'"

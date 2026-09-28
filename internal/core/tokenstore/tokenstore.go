@@ -238,7 +238,12 @@ func (f *File) lock() (func(), error) {
 	for {
 		handle, err := os.OpenFile(path, os.O_CREATE|os.O_EXCL|os.O_WRONLY, 0o600)
 		if err == nil {
-			handle.Close()
+			// The lock file holds nothing: it is there, or it is not. A close that fails
+			// leaves one that may not be, so it is removed and the lock not taken.
+			if closeErr := handle.Close(); closeErr != nil {
+				_ = os.Remove(path)
+				return nil, errs.Authf("cannot lock %s: %v", f.Path, closeErr)
+			}
 			return func() { os.Remove(path) }, nil
 		}
 		if !errors.Is(err, fs.ErrExist) {

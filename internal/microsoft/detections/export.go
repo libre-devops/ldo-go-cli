@@ -13,6 +13,7 @@ import (
 	"time"
 
 	"github.com/libre-devops/ldo-go-cli/internal/core/fields"
+	"github.com/libre-devops/ldo-go-cli/internal/core/util"
 	"github.com/libre-devops/ldo-go-cli/internal/core/yamltext"
 )
 
@@ -149,7 +150,7 @@ func exportFrequency(data fields.Object, notes *[]string) string {
 		return frequency
 	}
 	period := fields.Text(fields.Map(data["schedule"]), "period")
-	*notes = append(*notes, "legacy schedule period '"+period+"' has no mapping; defaulted to PT24H, review.")
+	*notes = append(*notes, "legacy schedule period "+util.PythonRepr(period)+" has no mapping; defaulted to PT24H, review.")
 	return "PT24H"
 }
 
@@ -210,7 +211,7 @@ func exportMitre(template fields.Object, notes *[]string) []any {
 	if carried == "" {
 		carried = "none"
 	}
-	*notes = append(*notes, "legacy category '"+category+"' is not an ATT&CK tactic; techniques not carried: "+carried+".")
+	*notes = append(*notes, "legacy category "+util.PythonRepr(category)+" is not an ATT&CK tactic; techniques not carried: "+carried+".")
 	return nil
 }
 

@@ -213,7 +213,7 @@ func (c *GraphClient) mineOrTheirs(ctx context.Context, path, principalID, side 
 		}
 		return httpx.Collect(c.API.All(ctx, path, url.Values{"$filter": {"principalId eq " + util.ODataString(id)}}, ""))
 	}
-	return httpx.Collect(c.API.All(ctx, path+"/filterByCurrentUser(on='"+side+"')", nil, ""))
+	return httpx.Collect(c.API.All(ctx, path+"/filterByCurrentUser(on="+util.ODataString(side)+")", nil, ""))
 }
 
 func (c *GraphClient) roleID(ctx context.Context, role string) (string, error) {
