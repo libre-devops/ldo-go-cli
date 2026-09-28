@@ -1,0 +1,22 @@
+[
+  {
+    "workflow": "code-view",
+    "key": "servicenow",
+    "connection_name": "api-servicenow",
+    "connection_id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-int/providers/Microsoft.Web/connections/api-servicenow",
+    "managed_api_id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Web/locations/uksouth/managedApis/service-now",
+    "authentication": "ManagedServiceIdentity",
+    "source": "../ldo-go-cli/internal/cli/testdata/logicapps/code-view.json",
+    "managed_identity": true
+  },
+  {
+    "workflow": "code-view",
+    "key": "azuresentinel",
+    "connection_name": "api-sentinel",
+    "connection_id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-int/providers/Microsoft.Web/connections/api-sentinel",
+    "managed_api_id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Web/locations/uksouth/managedApis/azuresentinel",
+    "authentication": null,
+    "source": "../ldo-go-cli/internal/cli/testdata/logicapps/code-view.json",
+    "managed_identity": false
+  }
+]

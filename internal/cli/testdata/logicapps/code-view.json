@@ -1,0 +1,70 @@
+{
+  "definition": {
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "$connections": {
+        "type": "Object",
+        "defaultValue": {}
+      },
+      "ticket_prefix": {
+        "type": "String"
+      },
+      "retry_count": {
+        "type": "Int"
+      },
+      "category_map": {
+        "type": "Array"
+      }
+    },
+    "triggers": {
+      "manual": {
+        "type": "Request",
+        "kind": "Http"
+      }
+    },
+    "actions": {
+      "Compose": {
+        "type": "Compose",
+        "inputs": "@parameters('ticket_prefix')"
+      }
+    }
+  },
+  "parameters": {
+    "ticket_prefix": {
+      "value": "SIR"
+    },
+    "retry_count": {
+      "value": 3
+    },
+    "category_map": {
+      "value": [
+        {
+          "contains": "DDoS",
+          "value": "Denial of Service"
+        }
+      ]
+    },
+    "$connections": {
+      "type": "Object",
+      "value": {
+        "servicenow": {
+          "id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Web/locations/uksouth/managedApis/service-now",
+          "connectionId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-int/providers/Microsoft.Web/connections/api-servicenow",
+          "connectionName": "api-servicenow",
+          "connectionProperties": {
+            "authentication": {
+              "type": "ManagedServiceIdentity"
+            }
+          }
+        },
+        "azuresentinel": {
+          "id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Web/locations/uksouth/managedApis/azuresentinel",
+          "connectionId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-int/providers/Microsoft.Web/connections/api-sentinel",
+          "connectionName": "api-sentinel",
+          "connectionProperties": {}
+        }
+      }
+    }
+  }
+}

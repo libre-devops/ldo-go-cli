@@ -1,0 +1,1531 @@
+{
+  "az whoami": {
+    "profile": "string",
+    "state": "string",
+    "subscription_id": "string",
+    "subscription_name": "string",
+    "tenant_id": "string",
+    "user": "string"
+  },
+  "azure automation accounts": [
+    {
+      "id": "string",
+      "location": "string",
+      "name": "string"
+    }
+  ],
+  "azure automation jobs aa-ops": [
+    {
+      "name": "string",
+      "properties": {
+        "creationTime": "string",
+        "endTime": "string",
+        "runbook": {
+          "name": "string"
+        },
+        "startTime": "string",
+        "status": "string"
+      }
+    }
+  ],
+  "azure automation logs aa-ops": {
+    "job": {
+      "name": "string",
+      "properties": {
+        "creationTime": "string",
+        "runbook": {
+          "name": "string"
+        },
+        "startTime": "string",
+        "status": "string"
+      }
+    },
+    "streams": [
+      {
+        "id": "string",
+        "message": "string",
+        "stream": "string",
+        "time": "string"
+      }
+    ]
+  },
+  "azure defender-plans": [
+    {
+      "name": "string",
+      "properties": {
+        "pricingTier": "string"
+      },
+      "subscriptionId": "string"
+    }
+  ],
+  "azure parse-id /subscriptions/22222222-2222-2222-2222-222222222222/resourceGroups/rg/providers/Microsoft.Web/sites/app": [
+    {
+      "full_resource_type": "string",
+      "id": "string",
+      "management_group_name": "null",
+      "parent_resources": {},
+      "resource_group_name": "string",
+      "resource_name": "string",
+      "resource_provider": "string",
+      "resource_scope": "null",
+      "resource_type": "string",
+      "subscription_id": "string"
+    }
+  ],
+  "azure rbac ana@corp.example": [
+    {
+      "id": "string",
+      "properties": {
+        "principalId": "string",
+        "principalType": "string",
+        "roleDefinitionId": "string",
+        "scope": "string"
+      },
+      "roleName": "string"
+    }
+  ],
+  "azure recommendations": [
+    {
+      "id": "string",
+      "properties": {
+        "displayName": "string",
+        "metadata": {
+          "severity": "string"
+        },
+        "status": {
+          "code": "string"
+        }
+      }
+    }
+  ],
+  "azure resource-graph resources": [
+    {
+      "name": "string",
+      "type": "string"
+    }
+  ],
+  "azure secure-score": [
+    {
+      "properties": {
+        "score": {
+          "current": "number",
+          "max": "number",
+          "percentage": "number"
+        }
+      }
+    }
+  ],
+  "azure subscriptions": [
+    {
+      "displayName": "string",
+      "state": "string",
+      "subscriptionId": "string",
+      "tenantId": "string"
+    }
+  ],
+  "confluence page 101": {
+    "body": "string",
+    "id": "string",
+    "space": "null",
+    "space_id": "string",
+    "status": "string",
+    "title": "string",
+    "updated": "string",
+    "url": "string",
+    "version": "number"
+  },
+  "confluence pages": [
+    {
+      "id": "string",
+      "space": "string",
+      "space_id": "string",
+      "status": "string",
+      "title": "string",
+      "updated": "string",
+      "url": "string",
+      "version": "number"
+    }
+  ],
+  "confluence search type = page": [
+    {
+      "excerpt": "string",
+      "id": "string",
+      "space": "string",
+      "title": "string",
+      "type": "string",
+      "updated": "string",
+      "url": "string"
+    }
+  ],
+  "confluence spaces": [
+    {
+      "id": "string",
+      "key": "string",
+      "name": "string",
+      "status": "string",
+      "type": "string",
+      "url": "string"
+    }
+  ],
+  "devices av-signature web01 web02 --at-least 1.0": [
+    {
+      "device_id": "null",
+      "device_name": "null|string",
+      "engine_version": "null",
+      "found": "boolean",
+      "mode": "null|string",
+      "older_than_minimum": "boolean|null",
+      "os_platform": "null",
+      "platform_version": "null",
+      "query": "string",
+      "reported": "null|string",
+      "signature_version": "null|string",
+      "up_to_date": "boolean|null"
+    }
+  ],
+  "devices check web01 web02 --intune": {
+    "checked_at": "string",
+    "complete": "boolean",
+    "devices": [
+      {
+        "checks": {
+          "defender": {
+            "detail": "string",
+            "status": "string"
+          },
+          "entra": {
+            "detail": "string",
+            "status": "string"
+          },
+          "intune": {
+            "detail": "string",
+            "status": "string"
+          }
+        },
+        "complete": "boolean",
+        "defender": [
+          {
+            "aadDeviceId": "string",
+            "computerDnsName": "string",
+            "healthStatus": "string",
+            "id": "string",
+            "lastSeen": "string",
+            "machineTags": [
+              "string"
+            ],
+            "onboardingStatus": "string",
+            "osPlatform": "string",
+            "osVersion": "string",
+            "rbacGroupName": "string"
+          }
+        ],
+        "entra": [
+          {
+            "accountEnabled": "boolean",
+            "approximateLastSignInDateTime": "string",
+            "deviceId": "string",
+            "displayName": "string",
+            "id": "string",
+            "operatingSystem": "string",
+            "operatingSystemVersion": "string",
+            "trustType": "string"
+          }
+        ],
+        "intune": [
+          {
+            "azureADDeviceId": "string",
+            "complianceState": "string",
+            "deviceName": "string"
+          }
+        ],
+        "name": "string"
+      }
+    ],
+    "error": "null"
+  },
+  "devices show web01 --intune": {
+    "defender": [
+      {
+        "aadDeviceId": "string",
+        "computerDnsName": "string",
+        "healthStatus": "string",
+        "id": "string",
+        "lastSeen": "string",
+        "machineTags": [
+          "string"
+        ],
+        "onboardingStatus": "string",
+        "osPlatform": "string",
+        "osVersion": "string",
+        "rbacGroupName": "string"
+      }
+    ],
+    "entra": [
+      {
+        "device": {
+          "accountEnabled": "boolean",
+          "approximateLastSignInDateTime": "string",
+          "deviceId": "string",
+          "displayName": "string",
+          "id": "string",
+          "operatingSystem": "string",
+          "operatingSystemVersion": "string",
+          "trustType": "string"
+        },
+        "groups": [
+          {
+            "displayName": "string",
+            "groupTypes": [],
+            "id": "string",
+            "securityEnabled": "boolean"
+          }
+        ]
+      }
+    ],
+    "findings": [
+      {
+        "level": "string",
+        "message": "string"
+      }
+    ],
+    "intune": [
+      {
+        "azureADDeviceId": "string",
+        "complianceState": "string",
+        "deviceName": "string"
+      }
+    ],
+    "name": "string"
+  },
+  "devices watch web01 --max-passes 1": {
+    "checked_at": "string",
+    "complete": "boolean",
+    "devices": [
+      {
+        "checks": {
+          "defender": {
+            "detail": "string",
+            "status": "string"
+          },
+          "entra": {
+            "detail": "string",
+            "status": "string"
+          }
+        },
+        "complete": "boolean",
+        "defender": [
+          {
+            "aadDeviceId": "string",
+            "computerDnsName": "string",
+            "healthStatus": "string",
+            "id": "string",
+            "lastSeen": "string",
+            "machineTags": [
+              "string"
+            ],
+            "onboardingStatus": "string",
+            "osPlatform": "string",
+            "osVersion": "string",
+            "rbacGroupName": "string"
+          }
+        ],
+        "entra": [
+          {
+            "accountEnabled": "boolean",
+            "approximateLastSignInDateTime": "string",
+            "deviceId": "string",
+            "displayName": "string",
+            "id": "string",
+            "operatingSystem": "string",
+            "operatingSystemVersion": "string",
+            "trustType": "string"
+          }
+        ],
+        "intune": [],
+        "name": "string"
+      }
+    ],
+    "error": "null"
+  },
+  "entra app-credentials --all": [
+    {
+      "app_id": "string",
+      "credential": {
+        "displayName": "string",
+        "endDateTime": "string"
+      },
+      "days_left": "number",
+      "kind": "string",
+      "owner_id": "string",
+      "owner_kind": "string",
+      "owner_name": "string"
+    }
+  ],
+  "entra ca-policies": [
+    {
+      "displayName": "string",
+      "state": "string"
+    }
+  ],
+  "entra device-groups web01": [
+    {
+      "device": {
+        "accountEnabled": "boolean",
+        "approximateLastSignInDateTime": "string",
+        "deviceId": "string",
+        "displayName": "string",
+        "id": "string",
+        "operatingSystem": "string",
+        "operatingSystemVersion": "string",
+        "trustType": "string"
+      },
+      "groups": [
+        {
+          "displayName": "string",
+          "groupTypes": [
+            "string"
+          ],
+          "id": "string",
+          "securityEnabled": "boolean"
+        }
+      ]
+    }
+  ],
+  "entra devices web01 --group Servers": [
+    {
+      "devices": [
+        {
+          "accountEnabled": "boolean",
+          "approximateLastSignInDateTime": "string",
+          "deviceId": "string",
+          "displayName": "string",
+          "id": "string",
+          "operatingSystem": "string",
+          "operatingSystemVersion": "string",
+          "trustType": "string"
+        }
+      ],
+      "found": "boolean",
+      "groups": [
+        {
+          "id": "string",
+          "member": "boolean",
+          "name": "string"
+        }
+      ],
+      "query": "string"
+    }
+  ],
+  "entra group-devices Servers": {
+    "devices": [
+      {
+        "accountEnabled": "boolean",
+        "approximateLastSignInDateTime": "string",
+        "deviceId": "string",
+        "displayName": "string",
+        "id": "string",
+        "operatingSystem": "string",
+        "operatingSystemVersion": "string",
+        "trustType": "string"
+      }
+    ],
+    "group": {
+      "displayName": "string",
+      "groupTypes": [],
+      "id": "string",
+      "securityEnabled": "boolean"
+    }
+  },
+  "entra group-members Servers": {
+    "group": {
+      "displayName": "string",
+      "groupTypes": [],
+      "id": "string",
+      "securityEnabled": "boolean"
+    },
+    "members": [
+      {
+        "@odata.type": "string",
+        "displayName": "string",
+        "id": "string"
+      }
+    ]
+  },
+  "entra inspect-token": {
+    "checks": [
+      {
+        "detail": "string",
+        "name": "string",
+        "status": "string"
+      }
+    ],
+    "claims": {
+      "app_displayname": "string",
+      "appid": "string",
+      "aud": "string",
+      "exp": "number",
+      "iat": "number",
+      "idtyp": "string",
+      "iss": "string",
+      "scp": "string",
+      "tid": "string",
+      "upn": "string"
+    },
+    "header": {
+      "alg": "string",
+      "typ": "string"
+    },
+    "valid": "boolean"
+  },
+  "entra sign-ins": [
+    {
+      "status": {
+        "errorCode": "number"
+      },
+      "userPrincipalName": "string"
+    }
+  ],
+  "entra token graph": {
+    "checks": [
+      {
+        "detail": "string",
+        "name": "string",
+        "status": "string"
+      }
+    ],
+    "claims": {
+      "app_displayname": "string",
+      "appid": "string",
+      "aud": "string",
+      "exp": "number",
+      "iat": "number",
+      "idtyp": "string",
+      "iss": "string",
+      "scp": "string",
+      "tid": "string",
+      "upn": "string"
+    },
+    "header": {
+      "alg": "string",
+      "typ": "string"
+    },
+    "valid": "boolean"
+  },
+  "entra user-groups ana@corp.example": {
+    "groups": [
+      {
+        "displayName": "string",
+        "groupTypes": [],
+        "id": "string",
+        "securityEnabled": "boolean"
+      }
+    ],
+    "user": {
+      "accountEnabled": "boolean",
+      "displayName": "string",
+      "id": "string",
+      "mail": "string",
+      "userPrincipalName": "string",
+      "userType": "string"
+    }
+  },
+  "entra user-roles ana@corp.example": {
+    "active": [
+      {
+        "displayName": "string"
+      }
+    ],
+    "eligible": [
+      {
+        "roleDefinition": {
+          "displayName": "string"
+        }
+      }
+    ],
+    "eligible_error": "null",
+    "user": {
+      "accountEnabled": "boolean",
+      "displayName": "string",
+      "id": "string",
+      "mail": "string",
+      "userPrincipalName": "string",
+      "userType": "string"
+    }
+  },
+  "graph get users": [
+    {
+      "accountEnabled": "boolean",
+      "displayName": "string",
+      "id": "string",
+      "mail": "string",
+      "userPrincipalName": "string",
+      "userType": "string"
+    }
+  ],
+  "graph get-app billing-api": {
+    "appId": "string",
+    "displayName": "string",
+    "id": "string",
+    "signInAudience": "string"
+  },
+  "graph get-device web01": {
+    "accountEnabled": "boolean",
+    "approximateLastSignInDateTime": "string",
+    "deviceId": "string",
+    "displayName": "string",
+    "id": "string",
+    "operatingSystem": "string",
+    "operatingSystemVersion": "string",
+    "trustType": "string"
+  },
+  "graph get-group Linux servers": {
+    "displayName": "string",
+    "groupTypes": [],
+    "id": "string",
+    "securityEnabled": "boolean"
+  },
+  "graph get-sp billing-api": {
+    "appId": "string",
+    "displayName": "string",
+    "id": "string",
+    "servicePrincipalType": "string"
+  },
+  "graph get-user ana@corp.example": {
+    "accountEnabled": "boolean",
+    "displayName": "string",
+    "id": "string",
+    "mail": "string",
+    "userPrincipalName": "string",
+    "userType": "string"
+  },
+  "graph hunt DeviceInfo": [
+    {
+      "DeviceName": "string"
+    }
+  ],
+  "graph token": {
+    "checks": [
+      {
+        "detail": "string",
+        "name": "string",
+        "status": "string"
+      }
+    ],
+    "claims": {
+      "app_displayname": "string",
+      "appid": "string",
+      "aud": "string",
+      "exp": "number",
+      "iat": "number",
+      "idtyp": "string",
+      "iss": "string",
+      "scp": "string",
+      "tid": "string",
+      "upn": "string"
+    },
+    "header": {
+      "alg": "string",
+      "typ": "string"
+    },
+    "valid": "boolean"
+  },
+  "graph whoami": {
+    "client_app": "string",
+    "client_app_id": "string",
+    "expires_at": "string",
+    "kind": "string",
+    "object": {
+      "displayName": "string",
+      "id": "string"
+    },
+    "principal": "string",
+    "profile": "string",
+    "roles": [],
+    "scopes": [
+      "string"
+    ],
+    "tenant_id": "string"
+  },
+  "intune devices laptop-042 laptop-099": [
+    {
+      "devices": [
+        {
+          "complianceState": "string",
+          "deviceName": "string",
+          "lastSyncDateTime": "string",
+          "operatingSystem": "string",
+          "osVersion": "string",
+          "serialNumber": "string",
+          "userPrincipalName": "string"
+        }
+      ],
+      "query": "string"
+    }
+  ],
+  "jira issue OPS-1": {
+    "assignee": "string",
+    "created": "string",
+    "description": "string",
+    "id": "string",
+    "key": "string",
+    "labels": [
+      "string"
+    ],
+    "priority": "string",
+    "project": "string",
+    "reporter": "string",
+    "status": "string",
+    "status_category": "string",
+    "summary": "string",
+    "type": "string",
+    "updated": "string",
+    "url": "string"
+  },
+  "jira issues": [
+    {
+      "assignee": "null|string",
+      "created": "string",
+      "id": "string",
+      "key": "string",
+      "labels": [
+        "string"
+      ],
+      "priority": "string",
+      "project": "string",
+      "reporter": "string",
+      "status": "string",
+      "status_category": "string",
+      "summary": "string",
+      "type": "string",
+      "updated": "string",
+      "url": "string"
+    }
+  ],
+  "jira projects": [
+    {
+      "id": "string",
+      "key": "string",
+      "name": "string",
+      "type": "string",
+      "url": "string"
+    }
+  ],
+  "jira whoami": {
+    "account_id": "string",
+    "active": "boolean",
+    "email": "string",
+    "name": "string",
+    "profile": "string",
+    "site": "string",
+    "time_zone": "string"
+  },
+  "keyvault expiry kv-app": [
+    {
+      "attributes": {
+        "enabled": "boolean",
+        "exp": "number"
+      },
+      "days_left": "number",
+      "enabled": "boolean|null",
+      "expires": "string",
+      "kind": "string",
+      "name": "string",
+      "vault": "string"
+    }
+  ],
+  "logicapp check testdata/logicapps/code-view.json": [
+    {
+      "message": "string",
+      "rule": "string",
+      "severity": "string",
+      "source": "string",
+      "workflow": "string"
+    }
+  ],
+  "logicapp connections testdata/logicapps/code-view.json": [
+    {
+      "authentication": "null|string",
+      "connection_id": "string",
+      "connection_name": "string",
+      "key": "string",
+      "managed_api_id": "string",
+      "managed_identity": "boolean",
+      "source": "string",
+      "workflow": "string"
+    }
+  ],
+  "logicapp diff testdata/logicapps/arm.json testdata/logicapps/bare.json": [],
+  "logicapp export -g rg-int --name router": [
+    {
+      "id": "string",
+      "path": "string",
+      "shape": "string",
+      "workflow": "string"
+    }
+  ],
+  "logicapp order testdata/logicapps/flows": [
+    {
+      "depends_on": [
+        "string"
+      ],
+      "source": "string",
+      "tier": "number",
+      "workflow": "string"
+    }
+  ],
+  "logicapp params testdata/logicapps/code-view.json": [
+    {
+      "name": "string",
+      "reason": "string",
+      "satisfied": "boolean",
+      "satisfied_by": "string",
+      "secure": "boolean",
+      "source": "string",
+      "type": "string",
+      "workflow": "string"
+    }
+  ],
+  "logicapp references testdata/logicapps/references.json": [
+    {
+      "key": "string",
+      "source": "string",
+      "used_by": [
+        "string"
+      ],
+      "wired": "boolean",
+      "workflow": "string"
+    }
+  ],
+  "logicapp validate testdata/logicapps/arm.json -g rg-int": {
+    "code": "null",
+    "location": "string",
+    "message": "string",
+    "valid": "boolean",
+    "workflow": "string"
+  },
+  "logs ingestion -w aaaaaaaa-1111-2222-3333-444444444444": [
+    {
+      "billable_gigabytes": "number",
+      "gigabytes": "number",
+      "last_data": "string",
+      "quiet": "boolean",
+      "quiet_seconds": "number",
+      "solutions": [
+        "string"
+      ],
+      "table": "string"
+    }
+  ],
+  "logs query Heartbeat -w aaaaaaaa-1111-2222-3333-444444444444": [
+    {
+      "Computer": "string"
+    }
+  ],
+  "network test --url https://unreachable.corp.example/": {
+    "endpoints": [
+      {
+        "detail": "string",
+        "hint": "null|string",
+        "name": "string",
+        "ok": "boolean",
+        "proxy": "null",
+        "route": "string",
+        "seconds": "number",
+        "status": "null|number",
+        "url": "string"
+      }
+    ],
+    "settings": {
+      "ca_bundle": "null",
+      "ca_bundle_source": "string",
+      "certificates": {
+        "extra": "number",
+        "system_store": "boolean"
+      },
+      "no_proxy": [
+        "string"
+      ],
+      "proxy": "null",
+      "proxy_source": "string"
+    }
+  },
+  "news message MC3": {
+    "action_by": "null",
+    "body": "string",
+    "category": "string",
+    "ends": "null",
+    "id": "string",
+    "major": "boolean",
+    "services": [
+      "string"
+    ],
+    "severity": "string",
+    "starts": "null",
+    "tags": [],
+    "title": "string",
+    "updated": "string",
+    "url": "string"
+  },
+  "news messages": [
+    {
+      "action_by": "null",
+      "category": "string",
+      "ends": "null",
+      "id": "string",
+      "major": "boolean",
+      "services": [
+        "string"
+      ],
+      "severity": "string",
+      "starts": "null",
+      "tags": [],
+      "title": "string",
+      "updated": "string",
+      "url": "string"
+    }
+  ],
+  "pim active": [
+    {
+      "area": "string",
+      "assignment_type": "string",
+      "member_type": "string",
+      "permanent": "boolean",
+      "raw": {
+        "accessId": "string",
+        "assignmentType": "string",
+        "endDateTime": "string",
+        "groupId": "string",
+        "id": "string",
+        "properties": {
+          "assignmentType": "string",
+          "expandedProperties": {
+            "roleDefinition": {
+              "displayName": "string"
+            },
+            "scope": {
+              "displayName": "string"
+            }
+          },
+          "memberType": "string"
+        },
+        "roleDefinitionId": "string"
+      },
+      "role": "string",
+      "scope": "string"
+    }
+  ],
+  "pim approvals": [
+    {
+      "area": "string",
+      "raw": {
+        "id": "string",
+        "properties": {
+          "expandedProperties": {
+            "roleDefinition": {
+              "displayName": "string"
+            },
+            "scope": {
+              "displayName": "string"
+            }
+          },
+          "justification": "string",
+          "requestType": "string",
+          "scheduleInfo": {
+            "expiration": {
+              "duration": "string"
+            }
+          },
+          "status": "string"
+        }
+      },
+      "role": "string",
+      "status": "string"
+    }
+  ],
+  "pim eligible": [
+    {
+      "area": "string",
+      "assignment_type": "string",
+      "member_type": "string",
+      "permanent": "boolean",
+      "raw": {
+        "accessId": "string",
+        "groupId": "string",
+        "id": "string",
+        "memberType": "string",
+        "properties": {
+          "endDateTime": "string",
+          "expandedProperties": {
+            "roleDefinition": {
+              "displayName": "string"
+            },
+            "scope": {
+              "displayName": "string"
+            }
+          },
+          "memberType": "string"
+        },
+        "roleDefinitionId": "string"
+      },
+      "role": "string",
+      "scope": "string"
+    }
+  ],
+  "pim requests": [
+    {
+      "area": "string",
+      "raw": {
+        "accessId": "string",
+        "groupId": "string",
+        "id": "string",
+        "properties": {
+          "expandedProperties": {
+            "roleDefinition": {
+              "displayName": "string"
+            },
+            "scope": {
+              "displayName": "string"
+            }
+          },
+          "justification": "string",
+          "requestType": "string",
+          "scheduleInfo": {
+            "expiration": {
+              "duration": "string"
+            }
+          },
+          "status": "string"
+        }
+      },
+      "role": "string",
+      "status": "string"
+    }
+  ],
+  "pim settings Global Administrator": {
+    "active_expiry": "string",
+    "approvers": [
+      "string"
+    ],
+    "area": "string",
+    "authentication_context": "string",
+    "eligible_expiry": "string",
+    "max_activation": "string",
+    "requires_approval": "boolean",
+    "requires_justification": "boolean",
+    "requires_mfa": "boolean",
+    "requires_ticket": "boolean",
+    "role": "string",
+    "rules": [
+      {
+        "claimValue": "string",
+        "enabledRules": [
+          "string"
+        ],
+        "id": "string",
+        "isEnabled": "boolean",
+        "isExpirationRequired": "boolean",
+        "maximumDuration": "string",
+        "setting": {
+          "approvalStages": [
+            {
+              "primaryApprovers": [
+                {
+                  "description": "string",
+                  "groupId": "string",
+                  "userId": "string"
+                }
+              ]
+            }
+          ],
+          "isApprovalRequired": "boolean"
+        }
+      }
+    ],
+    "scope": "string"
+  },
+  "planner add-news Operations --bucket Message Center": [
+    {
+      "message": "string",
+      "task": "string",
+      "title": "string"
+    }
+  ],
+  "planner add-rollup Operations --bucket Message Center": [
+    {
+      "month": "string",
+      "new": "number",
+      "posts": "number",
+      "task": "string"
+    }
+  ],
+  "planner buckets Operations": [
+    {
+      "id": "string",
+      "name": "string"
+    }
+  ],
+  "planner plans": [
+    {
+      "created": "string",
+      "id": "string",
+      "owner": "null",
+      "title": "string"
+    }
+  ],
+  "planner tasks Operations": [
+    {
+      "bucket": "string",
+      "bucket_id": "string",
+      "completed": "null",
+      "created": "null",
+      "done": "boolean",
+      "due": "null",
+      "id": "string",
+      "percent_complete": "number",
+      "title": "string"
+    }
+  ],
+  "profiles": [
+    {
+      "active": "boolean",
+      "auth": "string",
+      "cloud": "string",
+      "default": "boolean",
+      "description": "string",
+      "kind": "string",
+      "name": "string",
+      "signed_in": "boolean",
+      "subscription_id": "null|string",
+      "tenant_id": "string",
+      "vendor": "string"
+    }
+  ],
+  "snow apps --all": [
+    {
+      "active": "string",
+      "name": "string",
+      "scope": "string",
+      "sys_class_name": "string",
+      "version": "string"
+    }
+  ],
+  "snow instance": {
+    "family": "string",
+    "instance": "string",
+    "profile": "string",
+    "release": "string",
+    "security_incident_response": {
+      "detail": "string",
+      "installed": "boolean",
+      "version": "string"
+    }
+  },
+  "snow token": {
+    "expires_on": "string",
+    "instance": "string",
+    "profile": "string",
+    "sign_in_kept": "boolean",
+    "token_cache": "string"
+  },
+  "snow whoami": {
+    "auth": "string",
+    "covers": {
+      "instance release and applications": "boolean"
+    },
+    "instance": "string",
+    "profile": "string",
+    "roles": [
+      "string"
+    ],
+    "sign_in": "string",
+    "user": {
+      "active": "string",
+      "email": "string",
+      "last_login_time": "string",
+      "locked_out": "string",
+      "name": "string",
+      "sys_id": "string",
+      "user_name": "string",
+      "web_service_access_only": "string"
+    }
+  },
+  "terraform docs": [
+    {
+      "folder": "string",
+      "header": "string",
+      "readme": "string",
+      "state": "string"
+    }
+  ],
+  "terraform sort": [
+    {
+      "blocks": "string",
+      "count": "number",
+      "file": "string",
+      "in_order": "boolean",
+      "state": "string"
+    }
+  ],
+  "xdr alerts": [
+    {
+      "alertCreationTime": "string",
+      "category": "string",
+      "computerDnsName": "string",
+      "detectionSource": "string",
+      "id": "string",
+      "machineId": "string",
+      "severity": "string",
+      "status": "string",
+      "title": "string"
+    }
+  ],
+  "xdr analyzer MDEClientAnalyzerResult.zip mde_support.zip": [
+    {
+      "analyzer_version": "string",
+      "errors": "number",
+      "facts": [
+        {
+          "alert": "null|string",
+          "name": "string",
+          "section": "string",
+          "value": "string"
+        }
+      ],
+      "findings": [
+        {
+          "category": "string",
+          "check": "string",
+          "guidance": "null|string",
+          "id": "string",
+          "result": "string",
+          "severity": "string"
+        }
+      ],
+      "host": "string",
+      "informational": "number",
+      "platform": "string",
+      "run_at": "string",
+      "source": "string",
+      "warnings": "number"
+    }
+  ],
+  "xdr detections list": [
+    {
+      "createdBy": "string",
+      "createdDateTime": "string",
+      "description": "string",
+      "detectionAction": {
+        "alertTemplate": {
+          "category": "string",
+          "customDetails": {
+            "CommandLine": "string"
+          },
+          "description": "string",
+          "entityMappings": {
+            "hosts": [
+              {
+                "deviceIdColumn": "string",
+                "nameColumn": "string"
+              }
+            ]
+          },
+          "impactedAssets": [
+            {
+              "@odata.type": "string"
+            }
+          ],
+          "mitreTechniques": [
+            "string"
+          ],
+          "recommendedActions": "string",
+          "severity": "string",
+          "tactics": [
+            {
+              "tactic": "string",
+              "techniques": [
+                {
+                  "subTechniques": [
+                    "string"
+                  ],
+                  "technique": "string"
+                }
+              ]
+            }
+          ],
+          "title": "string"
+        },
+        "automatedActions": {
+          "devices": [
+            {
+              "@odata.type": "string",
+              "actionType": "string",
+              "empty": "string",
+              "isolationType": "string"
+            }
+          ],
+          "oAuthApplications": [
+            {
+              "oAuthAppIdColumn": "string"
+            }
+          ]
+        },
+        "organizationalScope": {
+          "deviceGroups": [
+            "string"
+          ]
+        },
+        "responseActions": [
+          {
+            "@odata.type": "string"
+          }
+        ]
+      },
+      "displayName": "string",
+      "id": "string",
+      "isEnabled": "boolean",
+      "lastModifiedBy": "string",
+      "lastModifiedDateTime": "string",
+      "queryCondition": {
+        "queryText": "string"
+      },
+      "schedule": {
+        "frequency": "string",
+        "nextRunDateTime": "string",
+        "period": "string"
+      },
+      "status": "string"
+    }
+  ],
+  "xdr detections show 42": {
+    "detectionAction": {
+      "alertTemplate": {
+        "category": "string",
+        "impactedAssets": [
+          {
+            "@odata.type": "string"
+          }
+        ],
+        "mitreTechniques": [
+          "string"
+        ],
+        "severity": "string",
+        "title": "string"
+      },
+      "responseActions": [
+        {
+          "@odata.type": "string"
+        }
+      ]
+    },
+    "displayName": "string",
+    "id": "string",
+    "isEnabled": "boolean",
+    "queryCondition": {
+      "queryText": "string"
+    },
+    "schedule": {
+      "period": "string"
+    }
+  },
+  "xdr hunt DeviceInfo --endpoint": [
+    {
+      "DeviceName": "string"
+    }
+  ],
+  "xdr incidents latest": [
+    {
+      "alerts": [
+        {
+          "createdDateTime": "string",
+          "evidence": [
+            "string|{\"@odata.type\":\"string\",\"deviceDnsName\":\"string\",\"userAccount\":{\"accountName\":\"string\"}}"
+          ],
+          "id": "string",
+          "serviceSource": "string",
+          "severity": "string",
+          "status": "string",
+          "title": "string"
+        }
+      ],
+      "assignedTo": "string",
+      "createdDateTime": "string",
+      "customTags": [
+        "string"
+      ],
+      "displayName": "string",
+      "id": "string",
+      "incidentWebUrl": "string",
+      "lastUpdateDateTime": "string",
+      "severity": "string",
+      "status": "string"
+    }
+  ],
+  "xdr incidents list": [
+    {
+      "alerts": [
+        {
+          "createdDateTime": "string",
+          "evidence": [
+            "string|{\"@odata.type\":\"string\",\"deviceDnsName\":\"string\",\"userAccount\":{\"accountName\":\"string\"}}"
+          ],
+          "id": "string",
+          "serviceSource": "string",
+          "severity": "string",
+          "status": "string",
+          "title": "string"
+        }
+      ],
+      "assignedTo": "string",
+      "createdDateTime": "string",
+      "customTags": [
+        "string"
+      ],
+      "displayName": "string",
+      "id": "string",
+      "incidentWebUrl": "string",
+      "lastUpdateDateTime": "string",
+      "severity": "string",
+      "status": "string"
+    }
+  ],
+  "xdr incidents show 42": {
+    "alerts": [
+      {
+        "createdDateTime": "string",
+        "evidence": [
+          "string|{\"@odata.type\":\"string\",\"deviceDnsName\":\"string\",\"userAccount\":{\"accountName\":\"string\"}}"
+        ],
+        "id": "string",
+        "serviceSource": "string",
+        "severity": "string",
+        "status": "string",
+        "title": "string"
+      }
+    ],
+    "assignedTo": "string",
+    "createdDateTime": "string",
+    "customTags": [
+      "string"
+    ],
+    "displayName": "string",
+    "id": "string",
+    "incidentWebUrl": "string",
+    "lastUpdateDateTime": "string",
+    "severity": "string",
+    "status": "string"
+  },
+  "xdr incidents summary": {
+    "by_severity": {
+      "high": "number",
+      "medium": "number"
+    },
+    "by_source": {
+      "Endpoint": "number",
+      "Sentinel": "number"
+    },
+    "by_status": {
+      "active": "number",
+      "inProgress": "number"
+    },
+    "total": "number",
+    "window": "string"
+  },
+  "xdr incidents top": [
+    {
+      "alerts": [
+        {
+          "createdDateTime": "string",
+          "evidence": [
+            "string|{\"@odata.type\":\"string\",\"deviceDnsName\":\"string\",\"userAccount\":{\"accountName\":\"string\"}}"
+          ],
+          "id": "string",
+          "serviceSource": "string",
+          "severity": "string",
+          "status": "string",
+          "title": "string"
+        }
+      ],
+      "assignedTo": "string",
+      "createdDateTime": "string",
+      "customTags": [
+        "string"
+      ],
+      "displayName": "string",
+      "id": "string",
+      "incidentWebUrl": "string",
+      "lastUpdateDateTime": "string",
+      "severity": "string",
+      "status": "string"
+    }
+  ],
+  "xdr indicators": [
+    {
+      "action": "string",
+      "indicatorType": "string",
+      "indicatorValue": "string",
+      "severity": "string",
+      "title": "string"
+    }
+  ],
+  "xdr machines web01.corp.example nope": [
+    {
+      "found": "boolean",
+      "matched_name": "null|string",
+      "query": "string",
+      "records": [
+        {
+          "aadDeviceId": "string",
+          "computerDnsName": "string",
+          "healthStatus": "string",
+          "id": "string",
+          "lastSeen": "string",
+          "machineTags": [
+            "string"
+          ],
+          "onboardingStatus": "string",
+          "osPlatform": "string",
+          "osVersion": "string",
+          "rbacGroupName": "string"
+        }
+      ]
+    }
+  ],
+  "xdr stale": [
+    {
+      "aadDeviceId": "string",
+      "computerDnsName": "string",
+      "healthStatus": "string",
+      "id": "string",
+      "lastSeen": "string",
+      "machineTags": [
+        "string"
+      ],
+      "onboardingStatus": "string",
+      "osPlatform": "string",
+      "osVersion": "string",
+      "rbacGroupName": "string"
+    }
+  ],
+  "xdr timeline web01": [
+    {
+      "account": "string",
+      "action": "string",
+      "detail": "string",
+      "device_id": "string",
+      "device_name": "string",
+      "id": "string",
+      "process": "string",
+      "time": "string",
+      "type": "string"
+    }
+  ],
+  "xdr vulns web01.corp.example": [
+    {
+      "cvssV3": "number",
+      "id": "string",
+      "name": "string",
+      "publicExploit": "boolean",
+      "severity": "string"
+    }
+  ]
+}

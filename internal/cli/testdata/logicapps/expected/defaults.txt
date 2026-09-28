@@ -1,0 +1,39 @@
+{
+  "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "$connections": {
+      "type": "Object",
+      "defaultValue": {}
+    },
+    "ticket_prefix": {
+      "type": "String",
+      "defaultValue": "SIR"
+    },
+    "retry_count": {
+      "type": "Int",
+      "defaultValue": 3
+    },
+    "category_map": {
+      "type": "Array",
+      "defaultValue": [
+        {
+          "contains": "DDoS",
+          "value": "Denial of Service"
+        }
+      ]
+    }
+  },
+  "triggers": {
+    "manual": {
+      "type": "Request",
+      "kind": "Http"
+    }
+  },
+  "actions": {
+    "Compose": {
+      "type": "Compose",
+      "inputs": "@parameters('ticket_prefix')"
+    }
+  }
+}

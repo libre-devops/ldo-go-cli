@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/libre-devops/terraform-msgraph-xdr-custom-detection-rules/main/schema/custom-detection.schema.json
+#
+# Exported from Microsoft Defender XDR by ldo-go xdr detections export on 2026-09-25 10:00Z.
+# The id is the server assigned rule id, kept on purpose: the Terraform module keys
+# rules by id, so terraform import addresses and later plans line up. New rules
+# authored by hand should omit id. Review this file before committing.
+# TODO(export): legacy impactedAssets not converted (the module uses entity_mappings); review: #microsoft.graph.security.impactedDeviceAsset.
+# TODO(export): legacy responseActions not converted (the module uses automated_actions); review the original rule.
+id: "42"
+display_name: Old style rule
+status: disabled
+frequency: PT12H
+query: "DeviceEvents | take 1"
+alert:
+  title: Old style
+  severity: low
+  mitre:
+    - tactic: Execution
+      techniques:
+        - T1059

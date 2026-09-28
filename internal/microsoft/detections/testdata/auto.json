@@ -1,0 +1,72 @@
+{
+ "id": "9",
+ "displayName": "Auto off",
+ "description": "certutil fetching from the internet",
+ "status": "autoDisabled",
+ "createdBy": "ana@example.com",
+ "createdDateTime": "2026-07-01T09:00:00Z",
+ "lastModifiedBy": "ana@example.com",
+ "lastModifiedDateTime": "2026-09-20T09:00:00Z",
+ "schedule": {
+  "frequency": "PT3H",
+  "nextRunDateTime": "2026-09-25T12:00:00Z"
+ },
+ "queryCondition": {
+  "queryText": "DeviceProcessEvents\n| where FileName =~ \"certutil.exe\"\n| project Timestamp, ReportId, DeviceId, DeviceName"
+ },
+ "detectionAction": {
+  "alertTemplate": {
+   "title": "Certutil download",
+   "description": "certutil fetched remote content",
+   "severity": "medium",
+   "recommendedActions": "Recover and detonate the downloaded content.",
+   "tactics": [
+    {
+     "tactic": "CommandAndControl",
+     "techniques": [
+      {
+       "technique": "T1105"
+      },
+      {
+       "technique": "T1059",
+       "subTechniques": [
+        "T1059.001"
+       ]
+      }
+     ]
+    }
+   ],
+   "customDetails": {
+    "CommandLine": "ProcessCommandLine"
+   },
+   "entityMappings": {
+    "hosts": [
+     {
+      "deviceIdColumn": "DeviceId",
+      "nameColumn": "DeviceName"
+     }
+    ]
+   }
+  },
+  "organizationalScope": {
+   "deviceGroups": [
+    "Workstations-Corp"
+   ]
+  },
+  "automatedActions": {
+   "devices": [
+    {
+     "@odata.type": "x",
+     "actionType": "isolateDevice",
+     "isolationType": "full",
+     "empty": ""
+    }
+   ],
+   "oAuthApplications": [
+    {
+     "oAuthAppIdColumn": "AppId"
+    }
+   ]
+  }
+ }
+}

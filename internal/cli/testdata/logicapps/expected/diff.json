@@ -1,0 +1,12 @@
+[
+  {
+    "path": "parameters",
+    "change": "missing",
+    "reference": {
+      "ticket_prefix": {
+        "value": "SIR"
+      }
+    },
+    "difference": null
+  }
+]

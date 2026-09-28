@@ -1,0 +1,1 @@
+{"definition": {"triggers": {}, "actions": {"Call": {"type": "Workflow", "inputs": {"host": {"workflow": {"id": "/subscriptions/x/resourceGroups/y/providers/Microsoft.Logic/workflows/callee"}}}}}}, "parameters": {}}

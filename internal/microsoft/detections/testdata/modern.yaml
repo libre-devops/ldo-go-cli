@@ -1,0 +1,35 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/libre-devops/terraform-msgraph-xdr-custom-detection-rules/main/schema/custom-detection.schema.json
+#
+# Exported from Microsoft Defender XDR by ldo-go xdr detections export on 2026-09-25 10:00Z.
+# The id is the server assigned rule id, kept on purpose: the Terraform module keys
+# rules by id, so terraform import addresses and later plans line up. New rules
+# authored by hand should omit id. Review this file before committing.
+id: "7506"
+display_name: Certutil used to download remote content
+description: certutil fetching from the internet
+status: enabled
+frequency: PT3H
+query: |-
+  DeviceProcessEvents
+  | where FileName =~ "certutil.exe"
+  | project Timestamp, ReportId, DeviceId, DeviceName
+alert:
+  title: Certutil download
+  description: certutil fetched remote content
+  severity: medium
+  recommended_actions: Recover and detonate the downloaded content.
+  mitre:
+    - tactic: CommandAndControl
+      techniques:
+        - T1105
+        - technique: T1059
+          sub_techniques:
+            - T1059.001
+  custom_details:
+    CommandLine: ProcessCommandLine
+  entity_mappings:
+    hosts:
+      - device_id_column: DeviceId
+        name_column: DeviceName
+device_groups:
+  - Workstations-Corp

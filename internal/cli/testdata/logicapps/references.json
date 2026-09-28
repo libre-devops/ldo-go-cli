@@ -1,0 +1,51 @@
+{
+  "definition": {
+    "triggers": {
+      "Incident": {
+        "type": "ApiConnection",
+        "inputs": {
+          "host": {
+            "connection": {
+              "name": "@parameters('$connections')['azuresentinel']['connectionId']"
+            }
+          }
+        }
+      }
+    },
+    "actions": {
+      "Outer": {
+        "type": "Scope",
+        "actions": {
+          "Find": {
+            "type": "ApiConnection",
+            "inputs": {
+              "host": {
+                "connection": {
+                  "name": "@parameters('$connections')['servicenow']['connectionId']"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "parameters": {
+      "$connections": {
+        "type": "Object",
+        "defaultValue": {}
+      }
+    }
+  },
+  "parameters": {
+    "$connections": {
+      "value": {
+        "azuresentinel": {
+          "connectionId": "/a"
+        },
+        "servicenow": {
+          "connectionId": "/b"
+        }
+      }
+    }
+  }
+}

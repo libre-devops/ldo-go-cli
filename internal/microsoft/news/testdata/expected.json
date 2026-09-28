@@ -1,0 +1,48 @@
+{
+ "rollup_title": "Message Center rollup: 2026-09 (4 messages)",
+ "rollup": "# Message Center summary (2026-09)\n\nTotal: 4 messages (1 critical, 1 high, 2 normal)\n\n## By service\n- Exchange Online: 1\n- Microsoft Defender for Endpoint: 1\n- Microsoft Defender XDR: 1\n- Microsoft Teams: 1\n\n## By category\n- none: 1\n- planForChange: 1\n- preventOrFixIssue: 1\n- stayInformed: 1\n\n## Messages\n- MC1183010 2026-09-22 [Microsoft Teams] Microsoft Teams: new meeting controls for organisers\n- MC1177001 2026-09-10 [Microsoft Defender XDR, Microsoft Defender for Endpoint] Defender XDR: very long title words very long title words very long title words very long title words very long title words very long title words very long title words very long title words very long title words very long title words very long title words very long title words very long title words very long title words very long title words very long title words very long title words very long title words very long title words very long title words\n- MC1100000 2026-09-02 [Exchange Online] Exchange café ü change\n- MC1099999 2026-09-01 No services",
+ "kept": "# Message Center summary (2026-09)\n\nTotal: 2 messages (0 critical, 1 high, 1 normal)\n\n## By service\n- Microsoft Defender for Endpoint: 1\n- Microsoft Defender XDR: 1\n- Microsoft Teams: 1\n\n## By category\n- planForChange: 1\n- stayInformed: 1\n\n## Messages\n- MC1183010 2026-09-22 [Microsoft Teams] Microsoft Teams: new meeting controls for organisers\n- MC1177001 2026-09-10 [Microsoft Defender XDR, Microsoft Defender for Endpoint] Defender XDR: very long title words very long title words very long title words very long title words very long title words very long title words very long title words very long title words very long title words very long title words very long title words very long title words very long title words very long title words very long title words very long title words very long title words very long title words very long title words very long title words\n\n## Listed before\nListed before, and no longer among the month's posts: changed again since, or gone from Message Center.\n- MC1100000 2026-09-02 [Exchange Online] Exchange café ü change\n- MC1099999 2026-09-01 No services\n- MC999 2026-01-01 old line",
+ "one": "Message Center rollup: 2026-09 (1 message)",
+ "tasks": [
+  {
+   "title": "[Microsoft Teams] Microsoft Teams: new meeting controls for organisers [MC1183010]",
+   "short_title": "Microsoft Teams: new meeting controls for... [MC1183010]",
+   "notes": "Message ID: MC1183010\nPublished date: 9/21/2026\nCategory: Plan for change\nTags: New feature, User impact\n\nhttps://admin.microsoft.com/#/MessageCenter/:/messages/MC1183010\n\nWe are **updating** meeting controls.\n\n- One\n- Two with [docs](https://learn.microsoft.com/x)\n\nLinebreak and  \nhard"
+  },
+  {
+   "title": "MC1183010: Microsoft Teams: new meeting controls for organisers",
+   "short_title": "MC1183010: Microsoft Teams: new meeting controls for...",
+   "notes": "https://admin.microsoft.com/#/MessageCenter/:/messages/MC1183010\n\nWe are **updating** meeting controls.\n\n- One\n- Two with [docs](https://learn.microsoft.com/x)\n\nLinebreak and  \nhard"
+  },
+  {
+   "title": "[Microsoft Defender XDR, Microsoft Defender for Endpoint] Defender XDR: very long title words very long title words very long title words very long title words very long title words very long title words very long title words very long... [MC1177001]",
+   "short_title": "Defender XDR: very long title words very... [MC1177001]",
+   "notes": "Message ID: MC1177001\nPublished date: 9/1/2026\nCategory: Stay informed\n\nhttps://admin.microsoft.com/#/MessageCenter/:/messages/MC1177001"
+  },
+  {
+   "title": "MC1177001: Defender XDR: very long title words very long title words very long title words very long title words very long title words very long title words very long title words very long title words very long title words very long title words very...",
+   "short_title": "MC1177001: Defender XDR: very long title words very long...",
+   "notes": "https://admin.microsoft.com/#/MessageCenter/:/messages/MC1177001"
+  },
+  {
+   "title": "[Exchange Online] Exchange café ü change [MC1100000]",
+   "short_title": "Exchange café ü change [MC1100000]",
+   "notes": "Message ID: MC1100000\nPublished date: 8/30/2026\nCategory: Prevent or fix issue\nTags: Retirement\n\nhttps://admin.microsoft.com/#/MessageCenter/:/messages/MC1100000\n\n## What\n\n| A |\n| --- |\n| 1 |"
+  },
+  {
+   "title": "MC1100000: Exchange café ü change",
+   "short_title": "MC1100000: Exchange café ü change",
+   "notes": "https://admin.microsoft.com/#/MessageCenter/:/messages/MC1100000\n\n## What\n\n| A |\n| --- |\n| 1 |"
+  },
+  {
+   "title": "No services [MC1099999]",
+   "short_title": "No services [MC1099999]",
+   "notes": "Message ID: MC1099999\n\nhttps://admin.microsoft.com/#/MessageCenter/:/messages/MC1099999"
+  },
+  {
+   "title": "MC1099999: No services",
+   "short_title": "MC1099999: No services",
+   "notes": "https://admin.microsoft.com/#/MessageCenter/:/messages/MC1099999"
+  }
+ ]
+}

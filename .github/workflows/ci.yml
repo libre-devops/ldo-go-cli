@@ -1,0 +1,161 @@
+name: Lint and Test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+  # The release workflow calls this one, so the gate a release passes is this exact job
+  # set, and the binaries it publishes are the ones built and smoke tested here.
+  workflow_call:
+
+permissions:
+  contents: read
+
+concurrency:
+  # github.workflow is the calling workflow's name under workflow_call, so a release and a
+  # push to main land in their own groups and do not cancel each other.
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  GITLEAKS_VERSION: 8.30.1
+  # From the release's checksums file. Dependabot cannot update a pinned download, so bump
+  # both together when moving to a new gitleaks release.
+  GITLEAKS_SHA256: 551f6fc83ea457d62a0d98237cbad105af8d557003051f41f3e7ca7b3f2470eb
+
+jobs:
+  secrets:
+    name: Secret scan (gitleaks)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out (full history)
+        uses: actions/checkout@v7
+        with:
+          # Every commit, so a secret added and later removed is still found.
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Install gitleaks
+        run: |
+          archive="gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz"
+          curl -sSfL -o "$RUNNER_TEMP/$archive" \
+            "https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/$archive"
+          echo "${GITLEAKS_SHA256}  $RUNNER_TEMP/$archive" | sha256sum -c -
+          tar -xzf "$RUNNER_TEMP/$archive" -C "$RUNNER_TEMP" gitleaks
+
+      - name: Scan every commit
+        run: '"$RUNNER_TEMP/gitleaks" git --config .gitleaks.toml --redact --verbose .'
+
+  check:
+    name: Check (Linux)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Set up Go
+        uses: actions/setup-go@v7
+        with:
+          go-version-file: go.mod
+
+      - name: Set up just
+        uses: extractions/setup-just@53165ef7e734c5c07cb06b3c8e7b647c5aa16db3 # v4
+
+      # gofmt, go vet, the tests with the coverage floor, staticcheck and govulncheck.
+      - name: Check
+        run: just ci
+
+      - name: Keep the coverage report
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: coverage
+          path: coverage.out
+          retention-days: 14
+          if-no-files-found: ignore
+
+  platforms:
+    name: Test (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    steps:
+      - name: Check out
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Set up Go
+        uses: actions/setup-go@v7
+        with:
+          go-version-file: go.mod
+
+      # Plain go here: the justfile's recipes are written for bash.
+      - name: Vet
+        run: go vet ./...
+
+      - name: Test
+        run: go test -count=1 ./...
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Set up Go
+        uses: actions/setup-go@v7
+        with:
+          go-version-file: go.mod
+
+      - name: Set up just
+        uses: extractions/setup-just@53165ef7e734c5c07cb06b3c8e7b647c5aa16db3 # v4
+
+      # A release tag's version, else a development one naming the commit.
+      - name: Choose the version
+        id: version
+        run: |
+          if [ "$GITHUB_REF_TYPE" = tag ]; then
+            version="${GITHUB_REF_NAME#v}"
+          else
+            version="0.0.0-dev+${GITHUB_SHA::12}"
+          fi
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+
+      - name: Build every platform
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: just dist "$VERSION"
+
+      # The Linux binary runs the commands that need no sign-in.
+      - name: Smoke test
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          binary=dist/ldo-go-linux-amd64
+          test "$("$binary" --version)" = "ldo-go ${VERSION}"
+          "$binary" --help > /dev/null
+          "$binary" welcome --config "$RUNNER_TEMP/none.toml" > /dev/null
+          echo '{"ok": true}' | "$binary" json --compact | grep -qx '{"ok":true}'
+          "$binary" azure parse-id /subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/rg-net -o json > /dev/null
+
+      - name: Keep the binaries
+        uses: actions/upload-artifact@v7
+        with:
+          name: dist
+          path: dist/
+          retention-days: 14
+          if-no-files-found: error

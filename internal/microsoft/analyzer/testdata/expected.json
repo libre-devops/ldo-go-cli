@@ -1,0 +1,328 @@
+{
+ "windows": {
+  "file": "MDEClientAnalyzerResult.zip",
+  "report": {
+   "source": "MDEClientAnalyzerResult.zip",
+   "platform": "windows",
+   "host": "web01",
+   "facts": [
+    {
+     "section": "General",
+     "name": "PowerShell Language mode",
+     "value": "FullLanguage",
+     "alert": ""
+    },
+    {
+     "section": "General",
+     "name": "Script Version",
+     "value": "01Jul2026",
+     "alert": ""
+    },
+    {
+     "section": "General",
+     "name": "Script RunTime",
+     "value": "09/27/2026 00:29:59",
+     "alert": ""
+    },
+    {
+     "section": "Device",
+     "name": "Device Host Name",
+     "value": "web01",
+     "alert": ""
+    },
+    {
+     "section": "Device",
+     "name": "Device Operating System",
+     "value": "Windows Server 2022",
+     "alert": ""
+    },
+    {
+     "section": "EDR",
+     "name": "Sense service Status",
+     "value": "Stopped",
+     "alert": "High"
+    },
+    {
+     "section": "Antivirus",
+     "name": "Defender AV Security Intelligence Version",
+     "value": "1.419.1.0",
+     "alert": ""
+    }
+   ],
+   "findings": [
+    {
+     "id": "122001",
+     "severity": "error",
+     "category": "Services",
+     "check": "SenseService",
+     "result": "Sense is stopped",
+     "guidance": ""
+    },
+    {
+     "id": "121012",
+     "severity": "warning",
+     "category": "Configuration",
+     "check": "SecurityIntelligenceVersion",
+     "result": "Outdated version",
+     "guidance": "Update it:\nUpdates (https://learn.microsoft.com/x) & more"
+    },
+    {
+     "id": "130017",
+     "severity": "informational",
+     "category": "Connectivity",
+     "check": "EDRCloud CnC",
+     "result": "Connected",
+     "guidance": ""
+    }
+   ],
+   "analyzer_version": "01Jul2026",
+   "run_at": "09/27/2026 00:29:59"
+  }
+ },
+ "linux": {
+  "file": "mde_support.zip",
+  "report": {
+   "source": "mde_support.zip",
+   "platform": "linux",
+   "host": "db01.corp.example",
+   "facts": [
+    {
+     "section": "General",
+     "name": "Script version",
+     "value": "1.5.0",
+     "alert": ""
+    },
+    {
+     "section": "General",
+     "name": "Script run time",
+     "value": "2026-09-27T00:31:39+00:00",
+     "alert": ""
+    },
+    {
+     "section": "Device",
+     "name": "Device Name",
+     "value": "db01",
+     "alert": ""
+    },
+    {
+     "section": "Device",
+     "name": "Host Name",
+     "value": "db01.corp.example",
+     "alert": ""
+    },
+    {
+     "section": "Device",
+     "name": "OS Family",
+     "value": "Linux",
+     "alert": ""
+    },
+    {
+     "section": "Device",
+     "name": "Defender AV Security Intelligence Version",
+     "value": "1.419.2.0",
+     "alert": ""
+    }
+   ],
+   "findings": [
+    {
+     "id": "332009",
+     "severity": "error",
+     "category": "Connectivity",
+     "check": "Antivirus cloud",
+     "result": "the test connections failed",
+     "guidance": "Allow the Defender for Endpoint addresses through the proxy and firewall: https://learn.microsoft.com/defender-endpoint/linux-support-connectivity"
+    },
+    {
+     "id": "331004",
+     "severity": "warning",
+     "category": "Connectivity",
+     "check": "EDR Cloud Cyber",
+     "result": "some test connections failed",
+     "guidance": "Some test connections failed:\nhttps://learn.microsoft.com/y"
+    },
+    {
+     "id": "330002",
+     "severity": "informational",
+     "category": "Connectivity",
+     "check": "EDR cloud (command and control)",
+     "result": "every test connection succeeded",
+     "guidance": ""
+    },
+    {
+     "id": "339999",
+     "severity": "informational",
+     "category": "Other",
+     "check": "check 339999",
+     "result": "",
+     "guidance": ""
+    }
+   ],
+   "analyzer_version": "1.5.0",
+   "run_at": "2026-09-27T00:31:39+00:00"
+  }
+ },
+ "linux-bare": {
+  "file": "mde_support_binary.zip",
+  "report": {
+   "source": "mde_support_binary.zip",
+   "platform": "linux",
+   "host": "db01.corp.example",
+   "facts": [
+    {
+     "section": "General",
+     "name": "Script version",
+     "value": "1.5.0",
+     "alert": ""
+    },
+    {
+     "section": "General",
+     "name": "Script run time",
+     "value": "2026-09-27T00:31:39+00:00",
+     "alert": ""
+    },
+    {
+     "section": "Device",
+     "name": "Device Name",
+     "value": "db01",
+     "alert": ""
+    },
+    {
+     "section": "Device",
+     "name": "Host Name",
+     "value": "db01.corp.example",
+     "alert": ""
+    },
+    {
+     "section": "Device",
+     "name": "OS Family",
+     "value": "Linux",
+     "alert": ""
+    },
+    {
+     "section": "Device",
+     "name": "Defender AV Security Intelligence Version",
+     "value": "1.419.2.0",
+     "alert": ""
+    }
+   ],
+   "findings": [
+    {
+     "id": "332009",
+     "severity": "error",
+     "category": "Connectivity",
+     "check": "Antivirus cloud",
+     "result": "the test connections failed",
+     "guidance": "Allow the Defender for Endpoint addresses through the proxy and firewall: https://learn.microsoft.com/defender-endpoint/linux-support-connectivity"
+    },
+    {
+     "id": "331004",
+     "severity": "warning",
+     "category": "Connectivity",
+     "check": "EDR cloud (cyber data)",
+     "result": "some test connections failed",
+     "guidance": "Allow the Defender for Endpoint addresses through the proxy and firewall: https://learn.microsoft.com/defender-endpoint/linux-support-connectivity"
+    },
+    {
+     "id": "330002",
+     "severity": "informational",
+     "category": "Connectivity",
+     "check": "EDR cloud (command and control)",
+     "result": "every test connection succeeded",
+     "guidance": ""
+    },
+    {
+     "id": "339999",
+     "severity": "informational",
+     "category": "Other",
+     "check": "check 339999",
+     "result": "",
+     "guidance": ""
+    }
+   ],
+   "analyzer_version": "1.5.0",
+   "run_at": "2026-09-27T00:31:39+00:00"
+  }
+ },
+ "macos": {
+  "file": "mde_support_macos.zip",
+  "report": {
+   "source": "mde_support_macos.zip",
+   "platform": "macos",
+   "host": "db01.corp.example",
+   "facts": [
+    {
+     "section": "General",
+     "name": "Script version",
+     "value": "1.5.0",
+     "alert": ""
+    },
+    {
+     "section": "General",
+     "name": "Script run time",
+     "value": "2026-09-27T00:31:39+00:00",
+     "alert": ""
+    },
+    {
+     "section": "Device",
+     "name": "Device Name",
+     "value": "db01",
+     "alert": ""
+    },
+    {
+     "section": "Device",
+     "name": "Host Name",
+     "value": "db01.corp.example",
+     "alert": ""
+    },
+    {
+     "section": "Device",
+     "name": "OS Family",
+     "value": "Darwin",
+     "alert": ""
+    },
+    {
+     "section": "Device",
+     "name": "Defender AV Security Intelligence Version",
+     "value": "1.419.2.0",
+     "alert": ""
+    }
+   ],
+   "findings": [
+    {
+     "id": "232009",
+     "severity": "error",
+     "category": "Connectivity",
+     "check": "Antivirus cloud",
+     "result": "the test connections failed",
+     "guidance": ""
+    },
+    {
+     "id": "231004",
+     "severity": "warning",
+     "category": "Connectivity",
+     "check": "EDR cloud (cyber data)",
+     "result": "some test connections failed",
+     "guidance": ""
+    },
+    {
+     "id": "230002",
+     "severity": "informational",
+     "category": "Connectivity",
+     "check": "EDR cloud (command and control)",
+     "result": "every test connection succeeded",
+     "guidance": ""
+    },
+    {
+     "id": "239999",
+     "severity": "informational",
+     "category": "Other",
+     "check": "check 239999",
+     "result": "",
+     "guidance": ""
+    }
+   ],
+   "analyzer_version": "1.5.0",
+   "run_at": "2026-09-27T00:31:39+00:00"
+  }
+ }
+}

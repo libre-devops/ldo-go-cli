@@ -1,0 +1,31 @@
+{
+ "id": "42",
+ "displayName": "Old style rule",
+ "isEnabled": false,
+ "schedule": {
+  "period": "12H"
+ },
+ "queryCondition": {
+  "queryText": "DeviceEvents | take 1"
+ },
+ "detectionAction": {
+  "alertTemplate": {
+   "title": "Old style",
+   "severity": "low",
+   "category": "Execution",
+   "mitreTechniques": [
+    "T1059"
+   ],
+   "impactedAssets": [
+    {
+     "@odata.type": "#microsoft.graph.security.impactedDeviceAsset"
+    }
+   ]
+  },
+  "responseActions": [
+   {
+    "@odata.type": "#microsoft.graph.security.isolateDeviceResponseAction"
+   }
+  ]
+ }
+}

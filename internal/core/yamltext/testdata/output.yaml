@@ -1,0 +1,48 @@
+b: 1
+a:
+  - 1.5
+  - 2.0
+  - 1.0e-07
+  - 123456789012.0
+  - -0.5
+  - true
+  - null
+  - "yes"
+  - "No"
+  - "2026-09-24"
+  - plain words
+  - "two  spaces"
+  - "a: b"
+  - "@odata"
+  - |
+    multi
+    line
+  - "x\u2028y"
+  - "tab\tin"
+  - café
+  - "ctrl\u0001"
+  - "C1\u0085"
+  - {}
+  - []
+nested:
+  list:
+    - k: v
+      z:
+        - 1
+        - 2
+    - - 3
+      - 4
+    - []
+    - {}
+  empty: {}
+block: |-
+  one
+  two
+three: |+
+  a
+
+
+spaced: " lead\nx"
+trail: "a \nb"
+"123": key digits
+under_score-ok/+@: k

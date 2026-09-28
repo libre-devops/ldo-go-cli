@@ -1,0 +1,33 @@
+{
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg/providers/Microsoft.Logic/workflows/logic-arm",
+  "name": "logic-arm",
+  "type": "Microsoft.Logic/workflows",
+  "location": "uksouth",
+  "properties": {
+    "definition": {
+      "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+      "parameters": {
+        "ticket_prefix": {
+          "type": "String"
+        }
+      },
+      "triggers": {
+        "manual": {
+          "type": "Request",
+          "kind": "Http"
+        }
+      },
+      "actions": {
+        "Compose": {
+          "type": "Compose",
+          "inputs": "x"
+        }
+      }
+    },
+    "parameters": {
+      "ticket_prefix": {
+        "value": "SIR"
+      }
+    }
+  }
+}

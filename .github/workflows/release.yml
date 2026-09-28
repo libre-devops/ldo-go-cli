@@ -1,0 +1,89 @@
+name: Release
+
+# Push a tag such as v0.1.0 to release (just release does it, after its checks). The tag
+# must have its section in CHANGELOG.md.
+on:
+  push:
+    tags: ["v*.*.*"]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  ci:
+    name: Lint and Test
+    uses: ./.github/workflows/ci.yml
+
+  release:
+    name: Publish the GitHub release
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs: [ci]
+    permissions:
+      # Creating the release and attaching its files.
+      contents: write
+      # Signing the binaries' build provenance.
+      id-token: write
+      attestations: write
+    steps:
+      - name: Check out
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      # The binaries the gate built and smoke tested, not a fresh build.
+      - name: Fetch the build
+        uses: actions/download-artifact@v8
+        with:
+          name: dist
+          path: dist/
+
+      - name: Check the tag, the changelog and the binaries agree
+        env:
+          TAG: ${{ github.ref_name }}
+        run: |
+          version="${TAG#v}"
+          grep -qx "## ${version}" CHANGELOG.md || { echo "::error::CHANGELOG.md has no '## ${version}' section"; exit 1; }
+          chmod +x dist/ldo-go-linux-amd64
+          test "$(dist/ldo-go-linux-amd64 --version)" = "ldo-go ${version}"
+
+      - name: Write checksums
+        run: cd dist && sha256sum -- * > SHA256SUMS
+
+      - name: Attest the build provenance
+        uses: actions/attest-build-provenance@v4
+        with:
+          subject-path: dist/ldo-go-*
+
+      # The release's notes are its changelog section.
+      - name: Write the notes
+        env:
+          TAG: ${{ github.ref_name }}
+        run: |
+          version="${TAG#v}"
+          awk -v heading="## ${version}" '
+            $0 == heading { keep = 1; next }
+            keep && /^## / { exit }
+            keep { print }
+          ' CHANGELOG.md > "$RUNNER_TEMP/notes.md"
+          {
+            echo
+            echo "Check a download against \`SHA256SUMS\`, and its provenance with"
+            echo "\`gh attestation verify ldo-go-linux-amd64 --repo ${GITHUB_REPOSITORY}\`."
+          } >> "$RUNNER_TEMP/notes.md"
+
+      - name: Create the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          flags=()
+          # A pre-release (v0.2.0-rc.1) is marked as one, so it never becomes the latest.
+          if [[ ! "${TAG#v}" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            flags+=(--prerelease)
+          fi
+          gh release create "${TAG}" dist/* --verify-tag --title "${TAG}" --notes-file "$RUNNER_TEMP/notes.md" "${flags[@]}"

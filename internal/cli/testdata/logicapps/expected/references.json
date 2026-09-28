@@ -1,0 +1,20 @@
+[
+  {
+    "workflow": "references",
+    "key": "azuresentinel",
+    "used_by": [
+      "triggers/Incident"
+    ],
+    "wired": true,
+    "source": "../ldo-go-cli/internal/cli/testdata/logicapps/references.json"
+  },
+  {
+    "workflow": "references",
+    "key": "servicenow",
+    "used_by": [
+      "Outer/Find"
+    ],
+    "wired": true,
+    "source": "../ldo-go-cli/internal/cli/testdata/logicapps/references.json"
+  }
+]

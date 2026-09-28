@@ -1,0 +1,20 @@
+let wanted = dynamic(["web01.corp.example", "web01", "db01"]);
+let versions = DeviceTvmInfoGathering
+| where DeviceName in~ (wanted) or tostring(split(DeviceName, ".")[0]) in~ (wanted)
+| summarize arg_max(Timestamp, DeviceName, OSPlatform, AdditionalFields) by DeviceId
+| extend Fields = todynamic(AdditionalFields)
+| project DeviceId, DeviceName, OSPlatform, Reported = Timestamp,
+    AvSignatureVersion = tostring(Fields.AvSignatureVersion),
+    AvEngineVersion = tostring(Fields.AvEngineVersion),
+    AvPlatformVersion = tostring(Fields.AvPlatformVersion),
+    AvMode = tostring(Fields.AvMode);
+let freshness = DeviceTvmSecureConfigurationAssessment
+| where ConfigurationId == "scid-2011"
+| where DeviceName in~ (wanted) or tostring(split(DeviceName, ".")[0]) in~ (wanted)
+| summarize arg_max(Timestamp, IsCompliant, IsApplicable, Context) by DeviceId
+| project DeviceId, SignatureUpToDate = iff(IsApplicable, IsCompliant, bool(null)),
+    AssessmentContext = tostring(Context);
+versions
+| join kind=leftouter freshness on DeviceId
+| project-away DeviceId1
+| order by DeviceName asc

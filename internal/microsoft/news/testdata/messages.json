@@ -1,0 +1,70 @@
+[
+ {
+  "id": "MC1183010",
+  "title": "Microsoft Teams:   new meeting  controls for organisers",
+  "category": "planForChange",
+  "severity": "high",
+  "services": [
+   "Microsoft Teams"
+  ],
+  "tags": [
+   "New feature",
+   "User impact"
+  ],
+  "isMajorChange": true,
+  "startDateTime": "2026-09-21T18:00:00Z",
+  "lastModifiedDateTime": "2026-09-22T10:00:00Z",
+  "actionRequiredByDateTime": "2026-10-31T00:00:00Z",
+  "body": {
+   "content": "<p>We are <strong>updating</strong> meeting controls.</p><ul><li>One</li><li>Two with <a href=\"https://learn.microsoft.com/x\">docs</a></li></ul><p>Line<br>break and<br/>hard</p>"
+  }
+ },
+ {
+  "id": "MC1177001",
+  "title": "Defender XDR: very long title words very long title words very long title words very long title words very long title words very long title words very long title words very long title words very long title words very long title words very long title words very long title words very long title words very long title words very long title words very long title words very long title words very long title words very long title words very long title words ",
+  "category": "stayInformed",
+  "severity": "normal",
+  "services": [
+   "Microsoft Defender XDR",
+   "Microsoft Defender for Endpoint"
+  ],
+  "tags": [],
+  "isMajorChange": false,
+  "startDateTime": "2026-09-01T00:00:00Z",
+  "lastModifiedDateTime": "2026-09-10T08:00:00Z",
+  "body": {
+   "content": ""
+  }
+ },
+ {
+  "id": "MC1100000",
+  "title": "Exchange café ü change",
+  "category": "preventOrFixIssue",
+  "severity": "critical",
+  "services": [
+   "Exchange Online"
+  ],
+  "tags": [
+   "Retirement"
+  ],
+  "isMajorChange": false,
+  "startDateTime": "2026-08-30T00:00:00Z",
+  "lastModifiedDateTime": "2026-09-02T00:00:00Z",
+  "body": {
+   "content": "<h2>What</h2><table><tr><th>A</th></tr><tr><td>1</td></tr></table>"
+  }
+ },
+ {
+  "id": "MC1099999",
+  "title": "No services",
+  "category": "",
+  "severity": "",
+  "services": [],
+  "tags": [],
+  "isMajorChange": false,
+  "lastModifiedDateTime": "2026-09-01T00:00:00Z",
+  "body": {
+   "content": ""
+  }
+ }
+]

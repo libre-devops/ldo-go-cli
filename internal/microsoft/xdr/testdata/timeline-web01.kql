@@ -1,0 +1,15 @@
+let device = dynamic(["web01"]);
+let process_events = DeviceProcessEvents
+    | where Timestamp >= datetime(2026-09-24T10:00:00Z) and Timestamp < datetime(2026-09-24T12:00:00Z)
+    | where DeviceName in~ (device) or DeviceName startswith "web01."
+    | project Timestamp, Type = "process", ActionType, Detail = coalesce(ProcessCommandLine, FolderPath, FileName),
+        Account = coalesce(AccountName, InitiatingProcessAccountName), Process = InitiatingProcessFileName,
+        DeviceName, DeviceId, Id = tostring(ReportId);
+let alert_events = AlertEvidence
+    | where Timestamp >= datetime(2026-09-24T10:00:00Z) and Timestamp < datetime(2026-09-24T12:00:00Z)
+    | where DeviceName in~ (device) or DeviceName startswith "web01."
+    | summarize Timestamp = min(Timestamp) by AlertId, DeviceName, DeviceId
+    | join kind=leftouter (AlertInfo | summarize arg_max(Timestamp, Title, Severity) by AlertId) on AlertId
+    | project Timestamp, Type = "alert", ActionType = Severity, Detail = Title, Account = "", Process = "", DeviceName, DeviceId, Id = AlertId;
+union process_events, alert_events
+| top 50 by Timestamp desc

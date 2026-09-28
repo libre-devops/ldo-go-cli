@@ -1,0 +1,79 @@
+[
+  {
+    "workflow": "code-view",
+    "severity": "error",
+    "rule": "supplied-parameter-not-declared",
+    "message": "parameter 'extra' is supplied but not declared: the definition is the contract, and values only fill it",
+    "source": "../ldo-go-cli/internal/cli/testdata/logicapps/code-view.json"
+  },
+  {
+    "workflow": "code-view",
+    "severity": "error",
+    "rule": "callback-trigger-not-found",
+    "message": "callback trigger 'missing' is not in the definition (triggers: manual)",
+    "source": "../ldo-go-cli/internal/cli/testdata/logicapps/code-view.json"
+  },
+  {
+    "workflow": "code-view",
+    "severity": "warning",
+    "rule": "connections-unwired",
+    "message": "the definition declares $connections, but no connections are wired to it",
+    "source": "../ldo-go-cli/internal/cli/testdata/logicapps/code-view.json"
+  },
+  {
+    "workflow": "bare",
+    "severity": "error",
+    "rule": "parameter-has-no-value",
+    "message": "parameter 'ticket_prefix' (String) has no value: no defaultValue, and a bare definition has no wrapper values",
+    "source": "../ldo-go-cli/internal/cli/testdata/logicapps/bare.json"
+  },
+  {
+    "workflow": "bare",
+    "severity": "error",
+    "rule": "supplied-parameter-not-declared",
+    "message": "parameter 'extra' is supplied but not declared: the definition is the contract, and values only fill it",
+    "source": "../ldo-go-cli/internal/cli/testdata/logicapps/bare.json"
+  },
+  {
+    "workflow": "bare",
+    "severity": "error",
+    "rule": "callback-trigger-not-found",
+    "message": "callback trigger 'missing' is not in the definition (triggers: manual)",
+    "source": "../ldo-go-cli/internal/cli/testdata/logicapps/bare.json"
+  },
+  {
+    "workflow": "secure",
+    "severity": "error",
+    "rule": "parameter-has-no-value",
+    "message": "parameter 'api_secret' (SecureString) has no value: secure type: the wrapper's value is ignored on purpose; supply it as an input so the secret stays out of the definition",
+    "source": "../ldo-go-cli/internal/cli/testdata/logicapps/secure.json"
+  },
+  {
+    "workflow": "secure",
+    "severity": "error",
+    "rule": "supplied-parameter-not-declared",
+    "message": "parameter 'extra' is supplied but not declared: the definition is the contract, and values only fill it",
+    "source": "../ldo-go-cli/internal/cli/testdata/logicapps/secure.json"
+  },
+  {
+    "workflow": "secure",
+    "severity": "error",
+    "rule": "callback-trigger-not-found",
+    "message": "callback trigger 'missing' is not in the definition (triggers: manual)",
+    "source": "../ldo-go-cli/internal/cli/testdata/logicapps/secure.json"
+  },
+  {
+    "workflow": "template",
+    "severity": "error",
+    "rule": "supplied-parameter-not-declared",
+    "message": "parameter 'extra' is supplied but not declared: the definition is the contract, and values only fill it",
+    "source": "../ldo-go-cli/internal/cli/testdata/logicapps/template.json.tftpl"
+  },
+  {
+    "workflow": "template",
+    "severity": "error",
+    "rule": "callback-trigger-not-found",
+    "message": "callback trigger 'missing' is not in the definition (triggers: manual)",
+    "source": "../ldo-go-cli/internal/cli/testdata/logicapps/template.json.tftpl"
+  }
+]

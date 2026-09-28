@@ -1,0 +1,43 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/libre-devops/terraform-msgraph-xdr-custom-detection-rules/main/schema/custom-detection.schema.json
+#
+# Exported from Microsoft Defender XDR by ldo-go xdr detections export on 2026-09-25 10:00Z.
+# The id is the server assigned rule id, kept on purpose: the Terraform module keys
+# rules by id, so terraform import addresses and later plans line up. New rules
+# authored by hand should omit id. Review this file before committing.
+# TODO(export): Defender turned this rule off itself (autoDisabled), usually after its query failed again and again; it is exported as disabled: fix the query before enabling it.
+# TODO(export): the rule carries automated_actions: the module call needs allow_automated_actions = true.
+id: "9"
+display_name: Auto off
+description: certutil fetching from the internet
+status: disabled
+frequency: PT3H
+query: |-
+  DeviceProcessEvents
+  | where FileName =~ "certutil.exe"
+  | project Timestamp, ReportId, DeviceId, DeviceName
+alert:
+  title: Certutil download
+  description: certutil fetched remote content
+  severity: medium
+  recommended_actions: Recover and detonate the downloaded content.
+  mitre:
+    - tactic: CommandAndControl
+      techniques:
+        - T1105
+        - technique: T1059
+          sub_techniques:
+            - T1059.001
+  custom_details:
+    CommandLine: ProcessCommandLine
+  entity_mappings:
+    hosts:
+      - device_id_column: DeviceId
+        name_column: DeviceName
+device_groups:
+  - Workstations-Corp
+automated_actions:
+  devices:
+    - action_type: isolateDevice
+      isolation_type: full
+  oauth_applications:
+    - oauth_app_id_column: AppId

@@ -1,0 +1,24 @@
+[
+  {
+    "workflow": "callee",
+    "tier": 0,
+    "depends_on": [],
+    "source": "../ldo-go-cli/internal/cli/testdata/logicapps/flows/callee.json"
+  },
+  {
+    "workflow": "caller",
+    "tier": 1,
+    "depends_on": [
+      "callee"
+    ],
+    "source": "../ldo-go-cli/internal/cli/testdata/logicapps/flows/caller.json"
+  },
+  {
+    "workflow": "other",
+    "tier": 2,
+    "depends_on": [
+      "caller"
+    ],
+    "source": "../ldo-go-cli/internal/cli/testdata/logicapps/flows/other.json"
+  }
+]

@@ -1,0 +1,13 @@
+# Secret scanning: gitleaks' default rules, plus the public values this code holds on
+# purpose. Keep each allowance narrow, so a real secret beside one is still caught.
+title = "ldo-go"
+
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "Microsoft's first-party application ids, which are public and the same in every tenant"
+regexTarget = "match"
+regexes = [
+    '''[A-Za-z]+AppID += "[0-9a-f-]{36}"''',
+]
