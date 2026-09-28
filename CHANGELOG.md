@@ -6,6 +6,8 @@ is noted here too.
 
 ## Unreleased
 
+## 0.1.0
+
 The first release: the Python `ldo` 0.8.1, ported to Go.
 
 - Every command of the Python `ldo` 0.8.1: `devices`, `entra`, `intune`, `xdr` (incidents,
@@ -21,4 +23,4 @@ The first release: the Python `ldo` 0.8.1, ported to Go.
 - Releases carry a binary for Linux, macOS and Windows on amd64 and arm64, with
   `SHA256SUMS` and signed build provenance.
 
-What differs from the Python `ldo`, and why, is in [docs/differences.md](docs/differences.md).
+What differs from the Python `ldo`, and why, is in [docs/differences.md](https://github.com/libre-devops/ldo-go-cli/blob/main/docs/differences.md).
