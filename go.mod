@@ -3,9 +3,9 @@ module github.com/libre-devops/ldo-go-cli
 go 1.27.1
 
 require (
-	github.com/Azure/azure-sdk-for-go/sdk/azcore v1.23.1
+	github.com/Azure/azure-sdk-for-go/sdk/azcore v1.23.2
 	github.com/Azure/azure-sdk-for-go/sdk/azidentity v1.14.1
-	github.com/AzureAD/microsoft-authentication-library-for-go v1.10.0
+	github.com/AzureAD/microsoft-authentication-library-for-go v1.10.1
 	github.com/BurntSushi/toml v1.6.0
 	github.com/pkg/browser v0.0.0-20240102092130-5ac0b6a4141c
 	github.com/spf13/cobra v1.10.2
